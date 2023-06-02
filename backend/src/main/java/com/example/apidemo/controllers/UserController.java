@@ -1,5 +1,6 @@
 package com.example.apidemo.controllers;
 
+import com.example.apidemo.models.Credentials;
 import com.example.apidemo.models.User;
 import com.example.apidemo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,15 @@ public class UserController {
         // Do something with the data (e.g., save to a database)
         // ...
         userService.createUser(formData);
+    }
+
+    @PostMapping(path = "/login")
+    public int handleLogin(@RequestBody Credentials cred) {
+        // Process the form data
+        System.out.println(cred);
+        return 0;
+        // Do something with the data (e.g., save to a database)
+        // ...
+//        userService.createUser(formData);
     }
 }
