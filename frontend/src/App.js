@@ -15,6 +15,7 @@ function App() {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
+    setCurrentform('customer');
   }
 
   const handleLogout = () => {
