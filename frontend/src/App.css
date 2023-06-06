@@ -1,7 +1,12 @@
 .App {
+  display: flex;
+}
+
+.Card {
   text-align: center;
   display: flex;
   min-height: 100vh;
+  width: 100%;
   align-items: center;
   justify-content: center;
   color: white;
@@ -93,4 +98,3 @@ button {
     transform: rotate(360deg);
   }
 } */
-

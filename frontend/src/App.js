@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
+import './CSS/SideNavBar.css';
 import { Login } from './Components/Login';
 import { Register } from './Components/Register';
 import { Dashboard } from './Components/Dashboard';
 import { Home } from './Components/Home';
+import { SideNavBar }  from './Components/SideNavBar'
 
 function App() {
   const[currentForm, setCurrentform] = useState('home');
@@ -27,14 +29,17 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />}/>
-          <Route path='/login' element={<Login />}/>
-          <Route path='register' element={<Register />}/>
-          <Route path='/dashboard' element={<Dashboard />}/>
-        </Routes>
-      </BrowserRouter>
+      <SideNavBar/>
+      <div className="Card">
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Home />}/>
+            <Route path='/login' element={<Login />}/>
+            <Route path='register' element={<Register />}/>
+            <Route path='/dashboard' element={<Dashboard />}/>
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
