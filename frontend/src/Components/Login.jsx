@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,14 +27,6 @@ export const Login = (props) => {
 
         const result = sendDataToBackend(formData);
 
-        if(result == '1')
-            console.log('Here');
-        else
-        {
-            setErrorMessage('Incorrect Credentials');
-            setShowErrorMessage(true);
-        }
-
         setErrorMessage('');
         setShowErrorMessage(false);
 
@@ -47,16 +41,18 @@ export const Login = (props) => {
         axios.post('http://localhost:8080/api/login', formData)
             .then(response => {
                 // Handle successful response from the backend
-                console.log(response.data);
-                if(response.data == '0')
-                {
-                    result = 0;
+                console.log("From API " + response.data);
+                if (response.data == 0) {
+                    console.log('Dashboard Page');
+                    navigate('/dashboard');
                 }
-                    
-                
+                else {
+                    setErrorMessage('Incorrect Credentials');
+                    setShowErrorMessage(true);
+                }
 
                 //console.log('Data sent to the backend successfully');
-                
+
                 // Do something with the response if needed
             })
             .catch(error => {
@@ -92,7 +88,10 @@ export const Login = (props) => {
                 <button>Log In</button>
 
             </form>
-            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Dont have an account? Click here to register!</button>
+            <Link to='/register'>
+                <button className="link-btn">Dont have an account? Click here to register!</button>
+            </Link>
+
         </div>
     )
 }

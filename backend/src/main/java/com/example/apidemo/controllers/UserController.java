@@ -38,8 +38,15 @@ public class UserController {
     @PostMapping(path = "/login")
     public int handleLogin(@RequestBody Credentials cred) {
         // Process the form data
-        System.out.println(cred);
-        return 0;
+        User loggedin = userService.getUserByEmail(cred.getEmail());
+        System.out.println(loggedin);
+        if(loggedin != null)
+            if(cred.getPassword().equals(loggedin.getPassword()))
+                return 0;
+            else
+                return 1;
+        else
+            return 1;
         // Do something with the data (e.g., save to a database)
         // ...
 //        userService.createUser(formData);

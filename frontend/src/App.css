@@ -40,6 +40,7 @@ button {
   border: none;
   background-color: white;
   padding: 20px;
+  width: 100%;
   border-radius: 10px;
   cursor: pointer;
   color: #7439db;
