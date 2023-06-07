@@ -13,8 +13,8 @@ Simple Frontend Intilization:
   - 'npm start' will allow the front end to start.
 
 Simple Backend Intilization:
-  -You should run maven lifecycle commands clean and install.
-  -Then you can build the application
-  -Finally run application
+  - You should run maven lifecycle commands clean and install.
+  - Then you can build the application
+  - Finally run application
   
   These simple steps should allow you to demo the application.
