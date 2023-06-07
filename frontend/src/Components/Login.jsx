@@ -50,9 +50,11 @@ export const Login = (props) => {
             .then(response => {
                 // Handle successful response from the backend
                 console.log("From API " + response.data);
-                if (response.data == 0) {
+                if (response.data != null) {
                     console.log('Dashboard Page');
-                    handleLogin();
+                    const userObject = response.data;
+                    dispatch(setUser(userObject));
+                    // handleLogin();
                     navigate('/dashboard');
                 }
                 else {

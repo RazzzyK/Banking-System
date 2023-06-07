@@ -28,10 +28,18 @@ function rootReducer(state = initialState, action) {
             };
 
         case 'LOGOUT':
+            sessionStorage.clear()
             return {
                 ...state,
                 isLoggedIn: false,
-                user: null,
+                user: {
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    checkingAccount: '',
+                    savingsAccount: '',
+                    creditcard: ''
+                },
             };
         default:
             return state;

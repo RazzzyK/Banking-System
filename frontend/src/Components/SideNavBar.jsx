@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import '../CSS/SideNavBar.css'; // Import the CSS file for the component
 import { NavLink, Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ export const SideNavBar = () => {
 
   // Function to handle user logout
   const handleLogout = () => {
-    dispatch(logout(false));
+    dispatch(logout());
   };
 
   return (
@@ -31,7 +31,9 @@ export const SideNavBar = () => {
             </li>
             <li className="nav-item">Settings</li>
             <li className="nav-item">Support</li>
-            <li className="nav-item" onClick={handleLogout}>Log Out</li>
+            <li className="nav-item">
+              <Link to="/" className='active-link' onClick={handleLogout}>Log Out</Link>
+            </li>
           </ul>
         </nav>
       ) : (

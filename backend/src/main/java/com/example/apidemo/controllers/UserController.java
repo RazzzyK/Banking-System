@@ -36,17 +36,17 @@ public class UserController {
     }
 
     @PostMapping(path = "/login")
-    public int handleLogin(@RequestBody Credentials cred) {
+    public ResponseEntity<User> handleLogin(@RequestBody Credentials cred) {
         // Process the form data
         User loggedin = userService.getUserByEmail(cred.getEmail());
         System.out.println(loggedin);
         if(loggedin != null)
             if(cred.getPassword().equals(loggedin.getPassword()))
-                return 0;
+                return ResponseEntity.ok(loggedin);
             else
-                return 1;
+                return ResponseEntity.ok(null);
         else
-            return 1;
+            return ResponseEntity.ok(null);
         // Do something with the data (e.g., save to a database)
         // ...
 //        userService.createUser(formData);

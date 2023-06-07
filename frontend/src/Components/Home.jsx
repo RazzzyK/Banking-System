@@ -19,9 +19,6 @@ export const Home = (props) => {
             <Link to={'/register'}>
                 <button>Register</button>
             </Link>
-            <Link to={'/dashboard'}>
-                <button>Dashboard</button>
-            </Link>
         </div>
     )
 }
