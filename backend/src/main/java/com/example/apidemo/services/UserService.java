@@ -16,6 +16,9 @@ public class UserService {
     }
 
     public User createUser(User user) {
+        user.setCheckingAccount(100);
+        user.setSavingsAccount(1000);
+        user.setCreditCard(0);
         return userRepository.save(user);
     }
     public User getUserByEmail(String email) { return userRepository.findByEmail(email); }

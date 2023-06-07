@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Register = (props) => {
     const [email, setEmail] = useState('');
@@ -9,6 +9,7 @@ export const Register = (props) => {
     const [lastName, setLastName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +31,8 @@ export const Register = (props) => {
         }
 
         sendDataToBackend(formData);
-        props.onFormSwitch('login');
+        // props.onFormSwitch('login');// need navigate
+        navigate('/login');
 
         setErrorMessage('');
         setShowErrorMessage(false);
@@ -59,7 +61,7 @@ export const Register = (props) => {
     }
 
     return (
-        <div className="auth-form-container">
+        <div className="auth-form-container card">
             {showErrorMessage && (
                 <div className="modal">
                     <div className="modal-content">

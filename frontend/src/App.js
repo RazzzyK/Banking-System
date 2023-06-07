@@ -8,6 +8,8 @@ import { Register } from './Components/Register';
 import { Dashboard } from './Components/Dashboard';
 import { Home } from './Components/Home';
 import { SideNavBar }  from './Components/SideNavBar'
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 
 function App() {
   const[currentForm, setCurrentform] = useState('home');
@@ -28,19 +30,23 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <SideNavBar/>
-      <div className="Card">
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Home />}/>
-            <Route path='/login' element={<Login />}/>
-            <Route path='register' element={<Register />}/>
-            <Route path='/dashboard' element={<Dashboard />}/>
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="App">
+          <SideNavBar/>
+          <div className="">
+            
+              <Routes>
+                <Route index element={<Home />}/>
+                <Route path='/login' element={<Login />}/>
+                <Route path='register' element={<Register />}/>
+                <Route path='/dashboard' element={<Dashboard />}/>
+              </Routes>
+            
+          </div>
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

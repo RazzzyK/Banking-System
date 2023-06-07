@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { login, setUser } from "../Redux/actions";
 
 export const Login = (props) => {
     const [email, setEmail] = useState('');
@@ -8,6 +10,12 @@ export const Login = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const navigate = useNavigate();
+    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+    const dispatch = useDispatch();
+
+    const handleLogin = () => {
+        dispatch(login(true));
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,7 +44,7 @@ export const Login = (props) => {
         console.log(result);
     }
 
-    const sendDataToBackend = (formData) => {
+    const sendDataToBackend = (formData) => { //return user  object from backend and save to store!
         var result = 1;
         axios.post('http://localhost:8080/api/login', formData)
             .then(response => {
@@ -44,6 +52,7 @@ export const Login = (props) => {
                 console.log("From API " + response.data);
                 if (response.data == 0) {
                     console.log('Dashboard Page');
+                    handleLogin();
                     navigate('/dashboard');
                 }
                 else {
@@ -64,8 +73,9 @@ export const Login = (props) => {
         return result;
     }
 
+
     return (
-        <div className="auth-form-container">
+        <div className="auth-form-container card">
             {showErrorMessage && (
                 <div className="modal">
                     <div className="modal-content">

@@ -5,6 +5,7 @@
     color: #fff;
     padding: 20px;
     display: flex;
+    text-decoration: none;
   }
   
   ul {
@@ -25,4 +26,15 @@
   
   .active {
     font-weight: bold;
+  }
+
+  .active-link {
+    color: #000; /* Change the color as per your requirement */
+    text-decoration: none; /* Remove the underline */
+    /* Add any additional styles you want for the active link */
+    background: #fff;
+    width: 100%;
+    height: 47px;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0);
   }

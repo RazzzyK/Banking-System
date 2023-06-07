@@ -51,4 +51,13 @@ public class UserController {
         // ...
 //        userService.createUser(formData);
     }
+
+    @GetMapping(path = "/getdetails")
+    public ResponseEntity<User> getDetails() {
+
+        User u = userService.getUserByEmail("toriahearn@gmail.com");
+        System.out.println("Sending to front: " + u);
+
+        return ResponseEntity.ok(u);
+    }
 }

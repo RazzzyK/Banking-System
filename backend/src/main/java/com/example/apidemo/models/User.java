@@ -1,5 +1,6 @@
 package com.example.apidemo.models;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,4 +19,10 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    @Nullable
+    private double checkingAccount;
+    @Nullable
+    private double savingsAccount;
+    @Nullable
+    private double creditCard;
 }

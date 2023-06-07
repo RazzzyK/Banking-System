@@ -1,26 +1,8 @@
-// Define the initial state
-const initialState = {
-    isLoggedIn: false,
-    user: {
-        firstName: '',
-        lastName: '',
-        email: ''
-    }
-};
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './reducers';
 
-// Define the reducer
-function rootReducer(state = initialState, action) {
-    switch (action.type) {
-        case 'SET_USER':
-            return {
-                ...state,
-                isLoggedIn: true,
-                user: action.payload
-            };
-        default:
-            return state;
-    }
-}
+const store = configureStore({
+    reducer: rootReducer
+});
 
-// Create the Redux store
-export default rootReducer;
+export default store;
