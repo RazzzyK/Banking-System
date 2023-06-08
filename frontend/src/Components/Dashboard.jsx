@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Modal } from './Modal';
 
 export const Dashboard = (props) => {
     const user = useSelector((state) => state.user);
-
+    const [openModal, setOpenModal] = useState(false);
     const dispatch = useDispatch();
 
     // useEffect(() => {
@@ -14,6 +15,7 @@ export const Dashboard = (props) => {
 
     return (
         <div className="dashboard">
+            <Modal open={openModal} onClose={() => setOpenModal(false)} />
             <h2>Dashboard Page</h2>
             <h3>Welcome {user.firstName} {user.lastName}</h3>
             <div className="boxes">
@@ -22,6 +24,7 @@ export const Dashboard = (props) => {
                     <li>{user.email}</li>
                     <li>{user.checkingAccount}</li>
                 </ul>
+                <button onClick={() => setOpenModal(true)}>Make a Deposit</button>
             </div>
             <div className="boxes">
                 <p>Savings</p>
