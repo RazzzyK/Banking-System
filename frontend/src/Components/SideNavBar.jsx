@@ -49,7 +49,7 @@ export const SideNavBar = () => {
               <Link to="/register" className='active-link'>Register</Link>
             </li>
             <li className="nav-item">About</li>
-            <li className="nav-item">Services</li>
+            <li className="nav-item">Espanol</li>
             <li className="nav-item">Contact</li>
           </ul>
         </nav>
