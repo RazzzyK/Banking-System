@@ -7,7 +7,15 @@ import { Modal } from './Modal';
 export const Dashboard = (props) => {
     const user = useSelector((state) => state.user);
     const [openModal, setOpenModal] = useState(false);
+    const [modalResponse, setModalResponse] = useState('');
     const dispatch = useDispatch();
+
+    const handleModal = (response) => {
+        setModalResponse(response);
+        setOpenModal(false);
+        console.log("Modal Response: " + modalResponse);
+        // setModalResponse('');
+    }
 
     // useEffect(() => {
     //     getUserData()
@@ -15,7 +23,7 @@ export const Dashboard = (props) => {
 
     return (
         <div className="dashboard">
-            <Modal open={openModal} onClose={() => setOpenModal(false)} />
+            <Modal open={openModal} onClose={handleModal} />
             <h2>Dashboard Page</h2>
             <h3>Welcome {user.firstName} {user.lastName}</h3>
             <div className="boxes">
