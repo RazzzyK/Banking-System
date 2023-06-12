@@ -3,14 +3,9 @@ h2, h3 {
 }
 
 .container {
-    /* display: flex; */
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal columns */
     grid-gap: 10px; /* Gap between columns */
-  }
-  
-  .column {
-    /* flex-basis: 50%; Each column takes 50% of the container's width */
   }
 
 .dashboard {
