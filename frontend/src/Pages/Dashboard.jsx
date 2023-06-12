@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import '../CSS/DashboardStyle.css';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { Modal } from './Modal';
+import { useSelector } from 'react-redux';
+import { Modal } from '../Components/Modal';
 
 export const Dashboard = (props) => {
     const user = useSelector((state) => state.user);
     const [openModal, setOpenModal] = useState(false);
     const [modalResponse, setModalResponse] = useState('');
-    const dispatch = useDispatch();
 
     const handleModal = (response) => {
         setModalResponse(response);
@@ -35,7 +32,7 @@ export const Dashboard = (props) => {
                             <li>{user.email}</li>
                             <li>{user.checkingAccount}</li>
                         </ul>
-                        <button onClick={() => setOpenModal(true)}>Make a Deposit</button>
+                        {/* <button onClick={() => setOpenModal(true)}>Make a Deposit</button> */}
                     </div>
                     <div className="boxes">
                         <p>Savings</p>
@@ -51,7 +48,23 @@ export const Dashboard = (props) => {
                     </div>
                 </div>
                 <div className="column">
-
+                    <div className="btnBoxes">
+                        <div>
+                            <button className="btnStyle" onClick={() => setOpenModal(true)}>Make a Deposit</button>
+                            <button className="btnStyle">Make a Withdrawl</button>
+                        </div>
+                    </div>
+                    <div className="btnBoxes">
+                        <div>
+                            <button className="btnStyle">Make a Deposit</button>
+                            <button className="btnStyle">Make a Withdrawl</button>
+                        </div>
+                    </div>
+                    <div className="btnBoxes">
+                        <div>
+                            <button className="btnStyle">Check Credit Score</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Login } from './Components/Login';
-import { Register } from './Components/Register';
-import { Dashboard } from './Components/Dashboard';
+import { Login } from './Pages/Login';
+import { Register } from './Pages/Register';
+import { Dashboard } from './Pages/Dashboard';
 import { Transactions } from './Pages/Transactions';
 import { Contact } from './Pages/Contact';
-import { Home } from './Components/Home';
+import { Home } from './Pages/Home';
 import { SideNavBar }  from './Components/SideNavBar'
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';

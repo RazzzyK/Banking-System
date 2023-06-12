@@ -20,4 +20,20 @@ h2, h3 {
     border-radius: 10px;
     margin: 0.5rem;
     background-color: aliceblue;
+    height: 100px;
+}
+
+.btnBoxes {
+    padding: 2.5rem;
+    /* border: 1px solid white; */
+    border-radius: 10px;
+    margin: 0.5rem 0.5rem 5.5rem 0.5rem;
+    background-color: transparent;
+    height: 100px;
+    
+}
+
+.btnStyle {
+    width: 51%;
+    margin-top: 10px;
 }
