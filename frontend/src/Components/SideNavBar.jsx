@@ -39,18 +39,24 @@ export const SideNavBar = () => {
       ) : (
         <nav className="side-navbar">
           <ul>
-            <li className="nav-item active">
-              <NavLink to="/" className='active-link'>Home</NavLink>
-            </li>
-            <li className="nav-item">
-              <Link to="/login" className='active-link'>Login</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/register" className='active-link'>Register</Link>
-            </li>
-            <li className="nav-item">About</li>
-            <li className="nav-item">Espanol</li>
-            <li className="nav-item">Contact</li>
+            <Link to="/">
+              <li className="nav-item">Home</li>
+            </Link>
+            <Link to="/login">
+              <li className="nav-item">Login</li>
+            </Link>
+            <Link to="/register">
+              <li className="nav-item">Register</li>
+            </Link>
+            <Link to="/">
+              <li className="nav-item">About</li>
+            </Link>
+            <Link to="/">
+              <li className="nav-item">Espanol</li>
+            </Link>
+            <Link to="/">
+              <li className="nav-item">Contact</li>
+            </Link>
           </ul>
         </nav>
       )};

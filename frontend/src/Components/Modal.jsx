@@ -24,7 +24,6 @@ export const Modal = ({ open, onClose }) => {
                     <button className="btnPrimary" onClick={handleSubmit}><span className="bold">Submit Deposit</span></button>
                     <button className="btnCancel" onClick={onClose}><span className="bold">Cancel</span></button>
                 </div>
-
             </div>
         </div>
     )
