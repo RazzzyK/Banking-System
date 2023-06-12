@@ -9,10 +9,6 @@
   a {
     text-decoration: none;
   }
-  
-  li {
-    color: #ffffff;
-  } 
 
   ul {
     list-style: none;
@@ -29,6 +25,7 @@
     transition: color 0.2s;
     text-align:justify;
     text-decoration: none;
+    color: #ffffff;
   }
   
   .nav-item:hover {

@@ -1,0 +1,59 @@
+.card {
+    text-align: center;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    min-height: 80vh;
+    
+  }
+  
+  .auth-form-container, .login-form, .register-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .boxes {
+    padding: 5rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0.5rem;
+    background-color: aliceblue;
+  }
+  
+  .auth-form-container {
+    padding: 5rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0.5rem;
+  }
+  
+  /* label {
+    text-align: left;
+    padding: 0.25rem, 0;
+    
+  }
+  
+  input {
+    margin:0.5rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  button {
+    border: none;
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #7439db;
+  } */
+  
+   .link-btn {
+    background: none;
+    color: white;
+    text-decoration: underline;
+   }

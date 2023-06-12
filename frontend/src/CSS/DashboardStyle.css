@@ -1,0 +1,28 @@
+h2, h3 {
+    text-align: center;
+}
+
+.container {
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-gap: 10px; /* Gap between columns */
+  }
+  
+  .column {
+    /* flex-basis: 50%; Each column takes 50% of the container's width */
+  }
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.boxes {
+    padding: 5rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0.5rem;
+    background-color: aliceblue;
+}

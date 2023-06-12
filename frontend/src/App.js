@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import './CSS/SideNavBar.css';
 import { Login } from './Components/Login';
 import { Register } from './Components/Register';
 import { Dashboard } from './Components/Dashboard';
@@ -18,7 +17,6 @@ function App() {
         <BrowserRouter>
           <div className="App">
             <SideNavBar/>
-            <div className="">
               
                 <Routes>
                   <Route index element={<Home />}/>
@@ -27,7 +25,6 @@ function App() {
                   <Route path='/dashboard' element={<Dashboard />}/>
                 </Routes>
               
-            </div>
           </div>
         </BrowserRouter>
       </PersistGate>

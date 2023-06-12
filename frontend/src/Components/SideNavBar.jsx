@@ -20,20 +20,24 @@ export const SideNavBar = () => {
       {isLoggedIn ? (
         <nav className="side-navbar">
           <ul>
-            <li className="nav-item active">
-              <NavLink to="/dashboard" className='active-link'>Home</NavLink>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className='active-link'>Transactions</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className='active-link'>Cards</Link>
-            </li>
-            <li className="nav-item">Settings</li>
-            <li className="nav-item">Support</li>
-            <li className="nav-item">
-              <Link to="/" className='active-link' onClick={handleLogout}>Log Out</Link>
-            </li>
+            <Link to="/dashboard">
+              <li className="nav-item">Dashboard</li>
+            </Link>
+            <Link to="/">
+              <li className="nav-item">Transactions</li>
+            </Link>
+            <Link to="/">
+              <li className="nav-item">Cards</li>
+            </Link>
+            <Link to="/">
+              <li className="nav-item">Settings</li>
+            </Link>
+            <Link to="/">
+              <li className="nav-item">Support</li>
+            </Link>
+            <Link to="/" onClick={handleLogout}>
+              <li className="nav-item">Log Out</li>
+            </Link>
           </ul>
         </nav>
       ) : (

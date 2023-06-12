@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import '../CSS/DashboardStyle.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,25 +27,32 @@ export const Dashboard = (props) => {
             <Modal open={openModal} onClose={handleModal} />
             <h2>Dashboard Page</h2>
             <h3>Welcome {user.firstName} {user.lastName}</h3>
-            <div className="boxes">
-                <p>Checking</p>
-                <ul>
-                    <li>{user.email}</li>
-                    <li>{user.checkingAccount}</li>
-                </ul>
-                <button onClick={() => setOpenModal(true)}>Make a Deposit</button>
-            </div>
-            <div className="boxes">
-                <p>Savings</p>
-                <ul>
-                    <li>{user.savingsAccount}</li>
-                </ul>
-            </div>
-            <div className="boxes">
-                <p>Credit Card</p>
-                <ul>
-                    <li>{user.creditCard}</li>
-                </ul>
+            <div className="container">
+                <div className="column">
+                    <div className="boxes">
+                        <p>Checking</p>
+                        <ul>
+                            <li>{user.email}</li>
+                            <li>{user.checkingAccount}</li>
+                        </ul>
+                        <button onClick={() => setOpenModal(true)}>Make a Deposit</button>
+                    </div>
+                    <div className="boxes">
+                        <p>Savings</p>
+                        <ul>
+                            <li>{user.savingsAccount}</li>
+                        </ul>
+                    </div>
+                    <div className="boxes">
+                        <p>Credit Card</p>
+                        <ul>
+                            <li>{user.creditCard}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="column">
+
+                </div>
             </div>
         </div>
     )
