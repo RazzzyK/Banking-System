@@ -4,6 +4,8 @@ import './App.css';
 import { Login } from './Components/Login';
 import { Register } from './Components/Register';
 import { Dashboard } from './Components/Dashboard';
+import { Transactions } from './Pages/Transactions';
+import { Contact } from './Pages/Contact';
 import { Home } from './Components/Home';
 import { SideNavBar }  from './Components/SideNavBar'
 import { Provider } from 'react-redux';
@@ -23,6 +25,9 @@ function App() {
                   <Route path='/login' element={<Login />}/>
                   <Route path='register' element={<Register />}/>
                   <Route path='/dashboard' element={<Dashboard />}/>
+                  <Route path='/contact' element={<Contact />}/>
+                  <Route path='/transactions' element={<Transactions />}/>
+
                 </Routes>
               
           </div>

@@ -3,6 +3,8 @@ package com.example.apidemo.controllers;
 import com.example.apidemo.models.Credentials;
 import com.example.apidemo.models.User;
 import com.example.apidemo.services.UserService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
     private final UserService userService;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     //constructor
     @Autowired
@@ -59,5 +62,29 @@ public class UserController {
         System.out.println("Sending to front: " + u);
 
         return ResponseEntity.ok(u);
+    }
+
+    @PostMapping(path = "/updatechecking")
+    public ResponseEntity<User> updateChecking(@RequestBody String json) {
+//        userService.
+        String email = "";
+        double amount = 0;
+        try {
+            JsonNode rootNode = objectMapper.readTree(json);
+
+            // Extract values from the JSON using JsonNode methods
+            email = rootNode.get("email").asText();
+            amount = rootNode.get("amount").asDouble();
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+            e.printStackTrace();
+        }
+
+        User userToUpdate = userService.getUserByEmail(email);
+        userToUpdate.setCheckingAccount(userToUpdate.getCheckingAccount() + amount);
+        User userUpdated = userService.updateCheckingAccount(userToUpdate);
+        System.out.println(userUpdated);
+
+        return ResponseEntity.ok(userUpdated);
     }
 }

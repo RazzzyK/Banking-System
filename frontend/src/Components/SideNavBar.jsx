@@ -23,7 +23,7 @@ export const SideNavBar = () => {
             <Link to="/dashboard">
               <li className="nav-item">Dashboard</li>
             </Link>
-            <Link to="/">
+            <Link to="/transactions">
               <li className="nav-item">Transactions</li>
             </Link>
             <Link to="/">
@@ -32,8 +32,8 @@ export const SideNavBar = () => {
             <Link to="/">
               <li className="nav-item">Settings</li>
             </Link>
-            <Link to="/">
-              <li className="nav-item">Support</li>
+            <Link to="/contact">
+              <li className="nav-item">Contact</li>
             </Link>
             <Link to="/" onClick={handleLogout}>
               <li className="nav-item">Log Out</li>
@@ -58,7 +58,7 @@ export const SideNavBar = () => {
             <Link to="/">
               <li className="nav-item">Espanol</li>
             </Link>
-            <Link to="/">
+            <Link to="/contact">
               <li className="nav-item">Contact</li>
             </Link>
           </ul>
