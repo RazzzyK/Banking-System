@@ -66,7 +66,6 @@ public class UserController {
 
     @PostMapping(path = "/updatechecking")
     public ResponseEntity<User> updateChecking(@RequestBody String json) {
-//        userService.
         String email = "";
         double amount = 0;
         try {
@@ -81,10 +80,34 @@ public class UserController {
         }
 
         User userToUpdate = userService.getUserByEmail(email);
-        userToUpdate.setCheckingAccount(userToUpdate.getCheckingAccount() + amount);
+
         User userUpdated = userService.updateCheckingAccount(userToUpdate);
         System.out.println(userUpdated);
 
         return ResponseEntity.ok(userUpdated);
+    }
+
+    @PostMapping(path = "/withdrawl")
+    public ResponseEntity<User> withdrawl(@RequestBody String json) {
+        String email = "";
+        double amount = 0;
+        try {
+            JsonNode rootNode = objectMapper.readTree(json);
+
+            // Extract values from the JSON using JsonNode methods
+            email = rootNode.get("email").asText();
+            amount = rootNode.get("amount").asDouble();
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+            e.printStackTrace();
+        }
+
+        User userToUpdate = userService.getUserByEmail(email);
+        if(userToUpdate.getCheckingAccount() < amount)
+            return ResponseEntity.badRequest().build();
+        else {
+            userToUpdate.setCheckingAccount(userToUpdate.getCheckingAccount() - amount);
+            return ResponseEntity.ok(userService.withdrawChecking(userToUpdate));
+        }
     }
 }

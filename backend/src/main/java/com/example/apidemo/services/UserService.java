@@ -24,4 +24,5 @@ public class UserService {
     public User getUserByEmail(String email) { return userRepository.findByEmail(email); }
 
     public User updateCheckingAccount(User user) { return userRepository.save(user); }
+    public User withdrawChecking(User user) { return userRepository.save(user); }
 }
