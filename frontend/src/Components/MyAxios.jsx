@@ -7,8 +7,6 @@ import axios from 'axios';
 const MyAxios = ({ data, onDataReceived }) => {
     const [responseData, setResponseData] = useState(null);
     const [loading, setLoading] = useState(false);
-    // const url = props.data.url;
-    // const data = props.data.data;
     console.log("Data: " + data.data)
 
     useEffect(() => {
@@ -22,20 +20,12 @@ const MyAxios = ({ data, onDataReceived }) => {
                 onDataReceived(response.data); // Invoke the callback with the data
                 setLoading(false);
             } catch (error) {
-                // setError(error.message);
                 setLoading(false);
             }
         };
         fetchData();
     }, [data, onDataReceived]);
 
-    // return (
-    //     // <div>
-    //     //     {loading && <p>Loading...</p>}
-    //     //     {responseData && <p>{JSON.stringify(responseData)}</p>}
-    //     //     {/* {error && <p>Error: {error}</p>} */}
-    //     // </div>
-    // );
 };
 
 MyAxios.propTypes = {
