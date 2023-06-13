@@ -11,7 +11,7 @@ export const Dashboard = (props) => {
     const handleModal = (response) => {
         setModalResponse(response);
         setOpenModal(false);
-        console.log("Modal Response: " + modalResponse);
+        // console.log("Modal Response: " + modalResponse);
         // setModalResponse('');
     }
 
