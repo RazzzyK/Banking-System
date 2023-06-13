@@ -6,22 +6,18 @@ import { Modal } from '../Components/Modal';
 export const Dashboard = (props) => {
     const user = useSelector((state) => state.user);
     const [openModal, setOpenModal] = useState(false);
-    const [modalResponse, setModalResponse] = useState('');
+    // const [modalResponse, setModalResponse] = useState('');
+    const [clickedButton, setClickedButton] = useState("");
 
-    const handleModal = (response) => {
-        setModalResponse(response);
+    const handleModal = (response, button) => {
+        // setModalResponse(response);
+        setClickedButton(button)
         setOpenModal(false);
-        // console.log("Modal Response: " + modalResponse);
-        // setModalResponse('');
     }
-
-    // useEffect(() => {
-    //     getUserData()
-    // }, [])
 
     return (
         <div className="dashboard">
-            <Modal open={openModal} onClose={handleModal} />
+            <Modal open={openModal} onClose={handleModal} buttonClicked={clickedButton} />
             <h2>Dashboard Page</h2>
             <h3>Welcome {user.firstName} {user.lastName}</h3>
             <div className="container">
@@ -32,7 +28,6 @@ export const Dashboard = (props) => {
                             <li>{user.email}</li>
                             <li>{user.checkingAccount}</li>
                         </ul>
-                        {/* <button onClick={() => setOpenModal(true)}>Make a Deposit</button> */}
                     </div>
                     <div className="boxes">
                         <p>Savings</p>
@@ -50,19 +45,39 @@ export const Dashboard = (props) => {
                 <div className="column">
                     <div className="btnBoxes">
                         <div>
-                            <button className="btnStyle" onClick={() => setOpenModal(true)}>Make a Deposit</button>
-                            <button className="btnStyle">Make a Withdrawl</button>
+                            <button className="btnStyle" onClick={() => {
+                                setOpenModal(true);
+                                setClickedButton("DepositChecking");;
+                            }}>
+                                Make a Deposit
+                            </button>
+                            <button className="btnStyle" onClick={() => {
+                                setOpenModal(true);
+                                setClickedButton("WithdrawalChecking");;
+                            }}>
+                                Make a Withdrawl
+                            </button>
                         </div>
                     </div>
                     <div className="btnBoxes">
                         <div>
-                            <button className="btnStyle">Make a Deposit</button>
-                            <button className="btnStyle">Make a Withdrawl</button>
+                            <button className="btnStyle" onClick={() => {
+                                setOpenModal(true);
+                                setClickedButton("DepositSaving");;
+                            }}>
+                                Make a Deposit
+                            </button>
+                            <button className="btnStyle" onClick={() => {
+                                setOpenModal(true);
+                                setClickedButton("WithdrawalSaving");;
+                            }}>
+                                Make a Withdrawl
+                            </button>
                         </div>
                     </div>
                     <div className="btnBoxes">
                         <div>
-                            <button className="btnStyle">Check Credit Score</button>
+                            <button className="btnStyle">Check Credit Score</button>  {/*no functionality yet */}
                         </div>
                     </div>
                 </div>

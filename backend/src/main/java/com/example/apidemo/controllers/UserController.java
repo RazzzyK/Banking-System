@@ -25,6 +25,7 @@ public class UserController {
 
     @GetMapping(path = "/testhit")
     public ResponseEntity<String> endpointHit() {
+        System.out.println("Hello World");
         return ResponseEntity.ok("HELLLLLLOOOOOOO WAHID");
     }
 
@@ -64,7 +65,7 @@ public class UserController {
         return ResponseEntity.ok(u);
     }
 
-    @PostMapping(path = "/updatechecking")
+    @PostMapping(path = "/depositchecking")
     public ResponseEntity<User> updateChecking(@RequestBody String json) {
         String email = "";
         double amount = 0;
@@ -80,15 +81,39 @@ public class UserController {
         }
 
         User userToUpdate = userService.getUserByEmail(email);
+        userToUpdate.setCheckingAccount(userToUpdate.getCheckingAccount() + amount);
+        System.out.println("Deposit Into Checking Account");
 
-        User userUpdated = userService.updateCheckingAccount(userToUpdate);
-        System.out.println(userUpdated);
-
-        return ResponseEntity.ok(userUpdated);
+        return ResponseEntity.ok(userService.updateCheckingAccount(userToUpdate));
     }
 
-    @PostMapping(path = "/withdrawl")
-    public ResponseEntity<User> withdrawl(@RequestBody String json) {
+    @PostMapping(path = "/withdrawalchecking")
+    public ResponseEntity<User> withdrawal(@RequestBody String json) {
+        String email = "";
+        double amount = 0;
+        try {
+            JsonNode rootNode = objectMapper.readTree(json);
+
+            // Extract values from the JSON using JsonNode methods
+            email = rootNode.get("email").asText();
+            amount = rootNode.get("amount").asDouble();
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+            e.printStackTrace();
+        }
+
+        System.out.println("Withdraw From Checking Account");
+        User userToUpdate = userService.getUserByEmail(email);
+        if(userToUpdate.getCheckingAccount() < amount)
+            return ResponseEntity.badRequest().build();
+        else {
+            userToUpdate.setCheckingAccount(userToUpdate.getCheckingAccount() - amount);
+            return ResponseEntity.ok(userService.updateCheckingAccount(userToUpdate));
+        }
+    }
+
+    @PostMapping(path = "/depositsaving")
+    public ResponseEntity<User> depositSaving(@RequestBody String json) {
         String email = "";
         double amount = 0;
         try {
@@ -103,11 +128,34 @@ public class UserController {
         }
 
         User userToUpdate = userService.getUserByEmail(email);
-        if(userToUpdate.getCheckingAccount() < amount)
+        userToUpdate.setSavingsAccount(userToUpdate.getSavingsAccount() + amount);
+        System.out.println("Deposit Into Saving Account");
+
+        return ResponseEntity.ok(userService.updateSavingsAccount(userToUpdate));
+    }
+
+    @PostMapping(path = "/withdrawalsaving")
+    public ResponseEntity<User> withdrawalSaving(@RequestBody String json) {
+        String email = "";
+        double amount = 0;
+        try {
+            JsonNode rootNode = objectMapper.readTree(json);
+
+            // Extract values from the JSON using JsonNode methods
+            email = rootNode.get("email").asText();
+            amount = rootNode.get("amount").asDouble();
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+            e.printStackTrace();
+        }
+
+        System.out.println("Withdraw From Saving Account");
+        User userToUpdate = userService.getUserByEmail(email);
+        if(userToUpdate.getSavingsAccount() < amount)
             return ResponseEntity.badRequest().build();
         else {
-            userToUpdate.setCheckingAccount(userToUpdate.getCheckingAccount() - amount);
-            return ResponseEntity.ok(userService.withdrawChecking(userToUpdate));
+            userToUpdate.setSavingsAccount(userToUpdate.getSavingsAccount() - amount);
+            return ResponseEntity.ok(userService.updateSavingsAccount(userToUpdate));
         }
     }
 }
