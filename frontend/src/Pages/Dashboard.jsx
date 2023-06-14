@@ -19,7 +19,7 @@ export const Dashboard = (props) => {
 
     const notify = () => {
         // toast.success('Make it TOASTY!', { position: toast.POSITION.TOP_RIGHT });
-        toast.error('BAAAAAAD!', { position: toast.POSITION.TOP_RIGHT });
+        toast.error('BAAAAAAD!', { position: toast.POSITION.TOP_CENTER });
       };
 
     return (
@@ -85,7 +85,7 @@ export const Dashboard = (props) => {
                     <div className="btnBoxes">
                         <div>
                             <button className="btnStyle" onClick={notify}>Check Credit Score</button>  {/*no functionality yet */}
-                            <ToastContainer/>
+                            <ToastContainer />
                         </div>
                     </div>
                 </div>
