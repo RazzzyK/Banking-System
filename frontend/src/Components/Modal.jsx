@@ -3,6 +3,8 @@ import '../CSS/Modal.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from "../Redux/actions";
 import { post } from "./AxiosClient";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Modal = ({ open, onClose, buttonClicked }) => {
     const [amount, setAmount] = useState('')
@@ -24,7 +26,9 @@ export const Modal = ({ open, onClose, buttonClicked }) => {
             case 'DepositChecking':
                 try {
                     const response = await post('api/depositchecking', data);
+                    toast.success('Successful Deposit into checking account!', { position: toast.POSITION.TOP_RIGHT });
                     dispatch(setUser(response.data));  //Saves to store
+                    
                 } catch (error) {
                     console.error('Error sending data to the backend:', error);
                 }
@@ -69,6 +73,7 @@ export const Modal = ({ open, onClose, buttonClicked }) => {
                 <input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="0.00" name="amount" />
                 <div className="btnContainer">
                     <button className="btnPrimary" onClick={handleSubmit}><span className="bold">Submit</span></button>
+                    <ToastContainer/>
                     <button className="btnCancel" onClick={onClose}><span className="bold">Cancel</span></button>
                 </div>
             </div>

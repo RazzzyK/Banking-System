@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import '../CSS/DashboardStyle.css';
 import { useSelector } from 'react-redux';
 import { Modal } from '../Components/Modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Dashboard = (props) => {
     const user = useSelector((state) => state.user);
@@ -14,6 +16,11 @@ export const Dashboard = (props) => {
         setClickedButton(button)
         setOpenModal(false);
     }
+
+    const notify = () => {
+        // toast.success('Make it TOASTY!', { position: toast.POSITION.TOP_RIGHT });
+        toast.error('BAAAAAAD!', { position: toast.POSITION.TOP_RIGHT });
+      };
 
     return (
         <div className="dashboard">
@@ -77,7 +84,8 @@ export const Dashboard = (props) => {
                     </div>
                     <div className="btnBoxes">
                         <div>
-                            <button className="btnStyle">Check Credit Score</button>  {/*no functionality yet */}
+                            <button className="btnStyle" onClick={notify}>Check Credit Score</button>  {/*no functionality yet */}
+                            <ToastContainer/>
                         </div>
                     </div>
                 </div>

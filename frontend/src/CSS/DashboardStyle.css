@@ -5,7 +5,7 @@ h2, h3 {
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal columns */
-    grid-gap: 10px; /* Gap between columns */
+    grid-gap: 16px; /* Gap between columns */
   }
 
 .dashboard {
@@ -18,7 +18,7 @@ h2, h3 {
     padding: 5rem;
     border: 1px solid white;
     border-radius: 10px;
-    margin: 0.5rem;
+    margin: 16px;
     background-color: aliceblue;
     height: 100px;
 }
