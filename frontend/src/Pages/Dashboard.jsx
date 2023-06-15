@@ -18,9 +18,9 @@ export const Dashboard = (props) => {
     }
 
     const notify = () => {
-        // toast.success('Make it TOASTY!', { position: toast.POSITION.TOP_RIGHT });
-        toast.error('BAAAAAAD!', { position: toast.POSITION.TOP_CENTER });
-      };
+        toast.success('Make it TOASTY!', { position: toast.POSITION.TOP_CENTER });
+        // toast.error('BAAAAAAD!', { position: toast.POSITION.TOP_CENTER });
+    };
 
     return (
         <div className="dashboard">

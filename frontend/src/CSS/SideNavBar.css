@@ -47,3 +47,9 @@
   .active {
     font-weight: bold;
   }
+
+  .side-navbar a.active {
+    /* Add active link styles here */
+    color: blue;
+    font-weight: bold;
+  }

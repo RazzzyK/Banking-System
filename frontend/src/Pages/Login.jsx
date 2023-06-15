@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import '../CSS/Log-RegFormStyle.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { login, setUser } from "../Redux/actions";
@@ -54,9 +56,11 @@ export const Login = (props) => {
                 if (response.data != null) {
                     console.log('Dashboard Page');
                     const userObject = response.data;
+
                     dispatch(setUser(userObject));
                     // handleLogin();
                     navigate('/dashboard');
+                    // toast.success('Login Sucuessful', { position: toast.POSITION.TOP_RIGHT });
                 }
                 else {
                     setErrorMessage('Incorrect Credentials');
@@ -99,7 +103,7 @@ export const Login = (props) => {
                 <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
 
                 <button>Log In</button>
-
+                <ToastContainer />
             </form>
             <Link to='/register'>
                 <button className="link-btn">Dont have an account? Click here to register!</button>

@@ -28,7 +28,7 @@ export const Modal = ({ open, onClose, buttonClicked }) => {
                     const response = await post('api/depositchecking', data);
                     toast.success('Successful Deposit into checking account!', { position: toast.POSITION.TOP_RIGHT });
                     dispatch(setUser(response.data));  //Saves to store
-                    
+
                 } catch (error) {
                     console.error('Error sending data to the backend:', error);
                 }
@@ -37,6 +37,7 @@ export const Modal = ({ open, onClose, buttonClicked }) => {
             case 'WithdrawalChecking':
                 try {
                     const response = await post('api/withdrawalchecking', data);
+                    toast.success('Successful Withdrawal from checking account!', { position: toast.POSITION.TOP_RIGHT });
                     dispatch(setUser(response.data));  //Saves to store
                 } catch (error) {
                     console.error('Error sending data to the backend:', error);
@@ -46,6 +47,7 @@ export const Modal = ({ open, onClose, buttonClicked }) => {
             case 'DepositSaving':
                 try {
                     const response = await post('api/depositsaving', data);
+                    toast.success('Successful Deposit into savings account!', { position: toast.POSITION.TOP_RIGHT });
                     dispatch(setUser(response.data));  //Saves to store
                 } catch (error) {
                     console.error('Error sending data to the backend:', error);
@@ -55,6 +57,7 @@ export const Modal = ({ open, onClose, buttonClicked }) => {
             case 'WithdrawalSaving':
                 try {
                     const response = await post('api/withdrawalsaving', data);
+                    toast.success('Successful Withdrawal from savings account!', { position: toast.POSITION.TOP_RIGHT });
                     dispatch(setUser(response.data));  //Saves to store
                 } catch (error) {
                     console.error('Error sending data to the backend:', error);
@@ -73,7 +76,7 @@ export const Modal = ({ open, onClose, buttonClicked }) => {
                 <input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="0.00" name="amount" />
                 <div className="btnContainer">
                     <button className="btnPrimary" onClick={handleSubmit}><span className="bold">Submit</span></button>
-                    <ToastContainer/>
+                    <ToastContainer />
                     <button className="btnCancel" onClick={onClose}><span className="bold">Cancel</span></button>
                 </div>
             </div>
